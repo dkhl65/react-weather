@@ -4,6 +4,10 @@ Final project for the Web Development using React and JSX course (3704) from the
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Variables
+
+`REACT_APP_API_KEY`: the key for Weather API.
+
 ## Available Scripts
 
 In the project directory, you can run:
