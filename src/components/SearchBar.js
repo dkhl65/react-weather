@@ -22,8 +22,8 @@ function SearchBar({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (typeof onSearch === "function") {
-      onSearch(location);
+    if (location.trim() && typeof onSearch === "function") {
+      onSearch(location.trim());
     }
   };
 
