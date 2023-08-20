@@ -3,6 +3,7 @@ import weatherapi from "../api/weatherapi";
 import SearchBar from "./SearchBar";
 import LocationSelector from "./LocationSelector";
 import CurrentWeather from "./CurrentWeather";
+import Forecast from "./Forecast";
 
 function App() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -10,6 +11,7 @@ function App() {
   const [locationList, setLocationList] = useState([]);
   const [locationTitle, setLocationTitle] = useState("");
   const [currentData, setCurrentData] = useState({});
+  const [forecastData, setForecastData] = useState([]);
   const [metric, setMetric] = useState(true);
   const [tabNum, setTabNum] = useState(1);
   const SEGMENT = "ui bottom attached tab segment";
@@ -17,6 +19,7 @@ function App() {
   const handleSearch = async (location) => {
     try {
       setCurrentData({});
+      setForecastData([]);
       setErrorMessage("");
       setLocationTitle("");
       setLocationList([]);
@@ -52,8 +55,11 @@ function App() {
   const getData = async (q) => {
     try {
       setLoading(true);
-      const { data } = await weatherapi.get("forecast.json", { params: { q } });
+      const { data } = await weatherapi.get("forecast.json", {
+        params: { q, days: 14 },
+      });
       setCurrentData(data.current);
+      setForecastData(data.forecast.forecastday);
     } catch (err) {
       setErrorMessage(err?.response?.data?.error?.message || err.message);
     } finally {
@@ -115,13 +121,15 @@ function App() {
           className={`item link ${tabNum === 2 && "active"}`}
           onClick={() => setTabNum(2)}
         >
-          Forcast
+          Forecast
         </div>
       </div>
       <div className={`${SEGMENT} ${tabNum === 1 && "active"}`}>
         <CurrentWeather data={currentData} metric={metric} />
       </div>
-      <div className={`${SEGMENT} ${tabNum === 2 && "active"}`}></div>
+      <div className={`${SEGMENT} ${tabNum === 2 && "active"}`}>
+        <Forecast data={forecastData} metric={metric} />
+      </div>
     </div>
   );
 }
