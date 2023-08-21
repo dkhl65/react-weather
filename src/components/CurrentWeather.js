@@ -1,6 +1,5 @@
 function CurrentWeather({ data, metric }) {
   if (!data?.uv) {
-    // don't render if data is not populated
     return;
   }
   return (
