@@ -60,7 +60,7 @@ function Forecast({ data, metric }) {
     {
       field: "wind",
       headerName: `Wind (${metric ? "km/h" : "mph"})`,
-      width: 115,
+      width: 120,
     },
     {
       field: "precipitation",
@@ -72,10 +72,10 @@ function Forecast({ data, metric }) {
       headerName: `Visibility (${metric ? "km" : "miles"})`,
       width: 135,
     },
-    { field: "uv", headerName: "UV Index", width: 180 },
+    { field: "uv", headerName: "UV Index", width: 160 },
   ];
   const hourColumnDefs = [
-    { field: "time", width: 70 },
+    { field: "time", width: 75 },
     { field: "condition" },
     {
       field: "temperature",
@@ -93,7 +93,7 @@ function Forecast({ data, metric }) {
       headerName: `Dewpoint (°${metric ? "C" : "F"})`,
       width: 125,
     },
-    { field: "cloud", headerName: "Cloud Cover (%)", width: 135 },
+    { field: "cloud", headerName: "Cloud Cover (%)", width: 140 },
     {
       field: "winds",
       width: 200,
@@ -101,7 +101,7 @@ function Forecast({ data, metric }) {
     {
       field: "gust",
       headerName: `Gust (${metric ? "km/h" : "mph"})`,
-      width: 110,
+      width: 115,
     },
     {
       field: "pressure",
