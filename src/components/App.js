@@ -69,16 +69,13 @@ function App() {
 
   return (
     <div className="ui container">
-      <h1>React Weather App</h1>
       <SearchBar onSearch={handleSearch} />
       {errorMessage && (
         <div className="ui negative message">
           <div className="header">{errorMessage}</div>
         </div>
       )}
-      <h2 className="ui header">
-        {(loading && "Loading...") || locationTitle}
-      </h2>
+      <h3>{(loading && "Loading...") || locationTitle}</h3>
       <LocationSelector
         locations={locationList}
         onSelect={handleLocationSelect}

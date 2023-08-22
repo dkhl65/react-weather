@@ -11,19 +11,17 @@ function Forecast({ data, metric }) {
   }
   const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-  const dayRowData = data.map((entry) => {
-    const dayNum = new Date(entry.date).getDay();
+  const dayRowData = data.map(({ date, day }) => {
+    const dayNum = new Date(date).getDay();
     return {
-      date: `${entry.date.substr(5, 5)} ${daysOfWeek[dayNum]}`,
-      condition: entry.day.condition.text,
-      high: metric ? entry.day.maxtemp_c : entry.day.maxtemp_f,
-      low: metric ? entry.day.mintemp_c : entry.day.mintemp_f,
-      wind: metric ? entry.day.maxwind_kph : entry.day.maxwind_mph,
-      precipitation: metric
-        ? entry.day.totalprecip_mm
-        : entry.day.totalprecip_in,
-      visibility: metric ? entry.day.avgvis_km : entry.day.avgvis_miles,
-      uv: entry.day.uv,
+      date: `${date.substr(5, 5)} ${daysOfWeek[dayNum]}`,
+      condition: day.condition.text,
+      high: metric ? day.maxtemp_c : day.maxtemp_f,
+      low: metric ? day.mintemp_c : day.mintemp_f,
+      wind: metric ? day.maxwind_kph : day.maxwind_mph,
+      precipitation: metric ? day.totalprecip_mm : day.totalprecip_in,
+      visibility: metric ? day.avgvis_km : day.avgvis_miles,
+      uv: day.uv,
     };
   });
   const hourRowData = data[day].hour.map((entry) => {
@@ -143,10 +141,7 @@ function Forecast({ data, metric }) {
           </span>
         </p>
       )}
-      <div
-        className="ag-theme-alpine"
-        style={{ height: hourView ? 1070 : 650 }}
-      >
+      <div className="ag-theme-alpine" style={{ height: hourView ? 600 : 650 }}>
         <AgGridReact
           gridOptions={{
             suppressCellFocus: true,

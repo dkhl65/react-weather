@@ -6,8 +6,8 @@ function SearchBar({ onSearch }) {
 
   const detectLocation = () => {
     window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const detectedLocation = `${position.coords.latitude}, ${position.coords.longitude}`;
+      ({ coords }) => {
+        const detectedLocation = `${coords.latitude}, ${coords.longitude}`;
         setErrorMessage("");
         setLocation(detectedLocation);
         if (typeof onSearch === "function") {

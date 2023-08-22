@@ -10,10 +10,11 @@ function LocationSelector({ locations, onSelect }) {
       {locations?.map(({ name, region, country }, i) => (
         <div key={i} className="item" onClick={() => handleClick(i)}>
           <div className="content">
-            <h3 className="header">
+            <h4 className="header">
+              <i className="map marker alternate icon" />
               {name}, {region && region + ", "}
               {country}
-            </h3>
+            </h4>
           </div>
         </div>
       ))}
