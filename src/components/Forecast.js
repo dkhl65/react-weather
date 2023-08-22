@@ -70,7 +70,7 @@ function Forecast({ data, metric }) {
     {
       field: "visibility",
       headerName: `Visibility (${metric ? "km" : "miles"})`,
-      width: 135,
+      width: 140,
     },
     { field: "uv", headerName: "UV Index", width: 160 },
   ];
@@ -116,7 +116,7 @@ function Forecast({ data, metric }) {
     {
       field: "visibility",
       headerName: `Visibility (${metric ? "km" : "miles"})`,
-      width: 135,
+      width: 140,
     },
     { field: "uv", headerName: "UV Index", width: 100 },
   ];
