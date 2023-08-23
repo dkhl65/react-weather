@@ -38,7 +38,7 @@ function App() {
         setErrorMessage("No locations found.");
       }
     } catch (err) {
-      setErrorMessage(err?.response?.data?.error?.message || err.message);
+      setErrorMessage(err.response?.data?.error?.message || err.message);
     } finally {
       setLoading(false);
     }
@@ -61,7 +61,7 @@ function App() {
       setCurrentData(data.current);
       setForecastData(data.forecast.forecastday);
     } catch (err) {
-      setErrorMessage(err?.response?.data?.error?.message || err.message);
+      setErrorMessage(err.response?.data?.error?.message || err.message);
     } finally {
       setLoading(false);
     }
