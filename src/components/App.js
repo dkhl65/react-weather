@@ -1,6 +1,5 @@
 import { useState } from "react";
 import weatherapi from "../api/weatherapi";
-import axios from "axios";
 import SearchBar from "./SearchBar";
 import LocationSelector from "./LocationSelector";
 import CurrentWeather from "./CurrentWeather";
@@ -16,18 +15,6 @@ function App() {
   const [metric, setMetric] = useState(true);
   const [tabNum, setTabNum] = useState(1);
   const SEGMENT = "ui bottom attached tab segment";
-
-  axios
-    .get("https://ipapi.co/json/")
-    .then((res) => {
-      axios
-        .post("https://visitortracker.vercel.app/", {
-          ipaddr: res.data.ip,
-          website: "danielweather",
-        })
-        .catch((err) => console.error(err));
-    })
-    .catch((err) => console.error(err));
 
   const handleSearch = async (location) => {
     try {
