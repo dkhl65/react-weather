@@ -29,7 +29,7 @@ function CurrentWeather({ data, metric }) {
 
   return (
     <>
-      <img src={data.condition.icon} alt="weather icon" />
+      <img src={"https:" + data.condition.icon} alt="weather icon" />
       <span className="ui huge header">
         {metric ? data.temp_c : data.temp_f}&deg;{metric ? "C" : "F"}
       </span>{" "}
